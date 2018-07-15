@@ -1,20 +1,17 @@
 {
-    "name": "mrxiaozhuo/lolly",
+    "name": "mrxzx/lolly",
+    "description": "一款轻量级PHP框架",
     "type": "framework",
-    "description": "Lolly Framework",
-    "keywords": [
-        "PHP framework"
-    ],
     "license": "MIT",
     "authors": [
         {
-            "name": "mrxzx",
-            "email": "mrxzx@wwsg18.top",
-            "homepage": "https://github.com/xiaozhuox",
-            "role": "Student"
+            "name": "xiaozhuox",
+            "email": "mrxzx@wwsg18.top"
         }
     ],
+    "minimum-stability": "stable",
     "require": {
+        "php": ">= 5.6.0",
         "filp/whoops": "^2.2",
         "monolog/monolog": "^1.23",
         "predis/predis": "^1.1"
