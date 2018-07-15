@@ -1,0 +1,27 @@
+{
+    "name": "mrxiaozhuo/lolly",
+    "type": "framework",
+    "description": "Lolly Framework",
+    "keywords": [
+        "PHP framework"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mrxzx",
+            "email": "mrxzx@wwsg18.top",
+            "homepage": "https://github.com/xiaozhuox",
+            "role": "Student"
+        }
+    ],
+    "require": {
+        "filp/whoops": "^2.2",
+        "monolog/monolog": "^1.23",
+        "predis/predis": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lolly\\Loader\\":"core/loader/"
+        }
+    }
+}
