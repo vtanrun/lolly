@@ -56,11 +56,21 @@ class Lytpl{
     }
 
     public static function render_tpl($path,$vars){
+        $config = require(Lolly . "app/config/template.php");
+        foreach($config['TPL_VAR'] as $k => $v){
+            $vars[$k] = $v;
+        }
+
         $lytpl = new \Lytpl\Lytpl($path,$vars);
         return $lytpl->display();
     }
 
     public static function render_err($code,$vars){
+        $config = require(Lolly . "app/config/template.php");
+        foreach($config['TPL_VAR'] as $k => $v){
+            $vars[$k] = $v;
+        }
+
         $lytpl = new \Lytpl\Lytpl($code . '.html',$vars,'error');
         return $lytpl->display();
     }

@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+    <?php echo $static; ?>
 <body>
 </body>
 </html>

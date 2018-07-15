@@ -17,8 +17,6 @@
         "predis/predis": "^1.1"
     },
     "autoload": {
-        "psr-4": {
-            "Lolly\\Loader\\":"core/loader/"
-        }
+        "files": ["core/loader/loader.php"]
     }
 }

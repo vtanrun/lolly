@@ -56,7 +56,7 @@ class Lolly{
 
     //增加单条路由
     public function route($path,$vers){
-        if(is_string($path) && is_array($vers)){
+        if(is_string($path) && is_string($vers)){
             $this->urls[$path] = $vers;
         }
     }
