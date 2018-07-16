@@ -30,8 +30,8 @@ class Parser{
             '/'.$this->lsym.'\s?import\s(\"|\')(.+?)(\"|\')\s?'.$this->rsym.'/',
 
             '/'.$this->lsym.'\s?if\s(.+?)\s?'.$this->rsym.'/',
-            '/'.$this->lsym.'\s?elif\s(.+?)\s?'.$this->rsym.'/',
             '/'.$this->lsym.'\s?else\s?'.$this->rsym.'/',
+            '/'.$this->lsym.'\s?elif\s(.+?)\s?'.$this->rsym.'/',
 
             '/'.$this->lsym.'\s?for\s(.+?)\s?'.$this->rsym.'/',
             '/'.$this->lsym.'\s?while\s(.+?)\s?'.$this->rsym.'/',
