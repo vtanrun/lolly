@@ -13,6 +13,6 @@ return [
     'RIGHT_SYM' => '}}',
     //全局变量
     'TPL_VAR' => [
-        'static' => Lolly . 'app/view/public/'
+        'static' => 'app/view/public/'
     ],
 ];
