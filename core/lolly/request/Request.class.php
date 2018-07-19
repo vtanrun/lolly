@@ -40,6 +40,28 @@ class Request
     public static function server(){
         return new server();
     }
+
+    //获取数据
+    public static function get($name, $key){
+        switch ($name) {
+            case 'get':
+                return $_GET[$key];
+            case 'post':
+                return $_POST[$key];
+            case 'request':
+                return $_REQUEST[$key];
+            case 'server':
+                return $_SERVER[$key];
+            case 'session':
+                return $_SESSION[$key];
+            case 'cookie':
+                return $_COOKIE[$key];
+            case 'env':
+                return $_ENV[$key];
+            case 'file':
+                return $_FILES[$key];
+        }
+    }
 }
 
 class server{

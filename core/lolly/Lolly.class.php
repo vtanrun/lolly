@@ -49,7 +49,7 @@ class Lolly{
 
             echo @call_user_func($this->urls[$route_path],$param);
         }else{
-            die(Lytpl::render_err('404',[]));
+            @die(Lytpl::render_err('404',[]));
         }
 
     }

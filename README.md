@@ -49,6 +49,79 @@
     
     ......
     
+简单的Hello world
+
+    <?php
+    /*
+     * lolly入口文件
+     *
+     */
+    
+    use Lolly\Lolly;
+    
+    define('Lolly',dirname(__FILE__) . '/');
+    
+    //引用自动加载文件
+    require_once(Lolly . 'vendor/autoload.php');
+    
+    $lolly = new Lolly();
+    
+    $lolly->route('/hello','hello');
+    
+    //index函数
+    function hello($arg){
+        arg可以获取二级Path
+        if(sizeof($arg) > 2){
+            return \Lytpl\Lytpl::render_err('404',[]);
+        }
+        return "hello:" . $arg[1];
+    }
+    //访问 /hello/name会输出一个 "hello:name" 如果访问的是 /hello/name/XXX 会出现404
+    $lolly->run();    
+    
+模板继承代码:
+> index.php
+
+    <?php
+    /*
+     * lolly入口文件
+     *
+     */
+    
+    use Lolly\Lolly;
+    
+    define('Lolly',dirname(__FILE__) . '/');
+    
+    //引用自动加载文件
+    require_once(Lolly . 'vendor/autoload.php');
+    
+    $lolly = new Lolly();
+    
+    $lolly->route('/hello','hello');
+    
+    function hello(){
+        return \Lytpl\Lytpl::render_tpl('index.html',[])
+    }
+    
+> Lolly/view/public/index.html
+
+    {{GlobalFun::extend('head/head.html',['test' => 'test msg'])}}
+    
+    <p>this is in Lolly/view/public/index.html</p>
+    
+    </body>
+    </html>
+    
+> Lolly/view/public/head/head.html
+
+    <html>
+    <head>
+        <title>{{$test}}</title>
+    </head>
+    <body>
+        <p>this is in Lolly/view/public/head/head.html</p>
+
+    
 #### siege测试
 
 循环输出10个 hello world

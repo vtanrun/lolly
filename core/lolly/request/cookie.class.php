@@ -12,7 +12,7 @@ class cookie{
     }
 
     //设置cookie
-    function set($name, $val = '' , $time = '', $httponly = false, $path = '', $domain = '', $secure = false){
+    function set($name, $val = '' , $time = '', $path = '', $domain = '', $secure = false,$httponly = false){
         if($time == '' || !is_numeric($time)){
             $time = $this->time;
         }else{
@@ -38,7 +38,7 @@ class cookie{
     //删除cookie
     function remove($name){
         if($name != ''){
-            $this->set($name, '',0);
+            $this->set($name, '',0,'/');
             return TRUE;
         }else{
             return FALSE;
