@@ -9,6 +9,6 @@
     <title>404 Not Find</title>
 </head>
 <body>
-    <h2>404 Not Find</h2>
+<h2>404 Not Find</h2>
 </body>
 </html>

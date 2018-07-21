@@ -74,4 +74,28 @@ class Lytpl{
         $lytpl = new \Lytpl\Lytpl($code . '.html',$vars,'error');
         return $lytpl->display();
     }
+
+    public static function render_data($vars,$json=true){
+        if($json){
+            return json_encode($vars);
+        }else{
+            $xml    = '<?xml version="1.0" encoding="utf-8"?>';
+            $xml   .= '<Lolly>';
+            $xml   .= Lytpl::data_to_xml($vars);
+            $xml   .= '</Lolly>';
+            return $xml;
+        }
+    }
+
+    private static function data_to_xml($data) {
+        $xml = '';
+        foreach ($data as $key => $val) {
+            is_numeric($key) && $key = "item id=\"$key\"";
+            $xml    .=  "<$key>";
+            $xml    .=  ( is_array($val) || is_object($val)) ? data_to_xml($val) : $val;
+            list($key, ) = explode(' ', $key);
+            $xml    .=  "</$key>";
+        }
+        return $xml;
+    }
 }

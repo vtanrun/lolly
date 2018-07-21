@@ -11,6 +11,7 @@ use Lytpl\Lytpl;
 class Lolly{
     private $config;
     private $urls = Array();
+    private $statics = Array();
 
     public function __construct(){
         //获取到核心配置文件到内容
@@ -43,11 +44,17 @@ class Lolly{
         }
 
         @$route_path = "/" . $urlList[0];
-        $param = $urlList ? $urlList : array();
+
+        $param = $urlList;
+        array_shift($param);
 
         if(isset($this->urls[$route_path])){
-
             echo @call_user_func($this->urls[$route_path],$param);
+        }elseif(isset($this->statics[$route_path])){
+            $dir = Lolly . 'app/view/public' . $this->statics[$route_path];
+            if(is_file($dir .  implode('/',$param))){
+                echo @file_get_contents($dir .  implode('/',$param));
+            }
         }else{
             @die(Lytpl::render_err('404',[]));
         }
@@ -77,6 +84,13 @@ class Lolly{
             foreach($conf as $k => $v){
                 $this->urls[$k] = $v;
             }
+        }
+    }
+
+    //增加静态文件的别名
+    public function addStaticAlias($alias,$path){
+        if(is_string($alias) && is_string($path)){
+            $this->statics[$alias] = $path;
         }
     }
 }

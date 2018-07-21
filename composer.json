@@ -1,7 +1,7 @@
 {
     "name": "mrxzx/lolly",
     "description": "一款轻量级PHP框架",
-    "type": "framework",
+    "type": "project",
     "license": "MIT",
     "authors": [
         {
