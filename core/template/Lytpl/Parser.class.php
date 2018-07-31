@@ -40,18 +40,18 @@ class Parser{
 
             '/'.$this->lsym.'\s?(.+?)\((.*?)\)\s?'.$this->rsym.'/',
 
-            '/'.$this->lsym.'\s?(.+?)\:\s?'.$this->rsym.'/',
-            '/'.$this->lsym.'\s?go\s(.+?)\s?'.$this->rsym.'/',
+                '/'.$this->lsym.'\s?(.+?)\:\s?'.$this->rsym.'/',
+                '/'.$this->lsym.'\s?go\s(.+?)\s?'.$this->rsym.'/',
 
-            '/'.$this->lsym.'\s?break\:\s?'.$this->rsym.'/',
+                '/'.$this->lsym.'\s?break\:\s?'.$this->rsym.'/',
 
-            '/'.$this->lsym.'\s?\@(.*?)\s?'.$this->rsym.'/',
-            '/'.$this->lsym.'\s?\#(.*?)\s?'.$this->rsym.'/',
-            '/'.$this->lsym.'\s?\%(.*?)\s?'.$this->rsym.'/',
-            '/'.$this->lsym.'\s?end\s?'.$this->rsym.'/'
-        );
-        $repattern = Array(
-            '<?php echo $$1; ?>',
+                '/'.$this->lsym.'\s?\@(.*?)\s?'.$this->rsym.'/',
+                '/'.$this->lsym.'\s?\#(.*?)\s?'.$this->rsym.'/',
+                '/'.$this->lsym.'\s?\%(.*?)\s?'.$this->rsym.'/',
+                '/'.$this->lsym.'\s?end\s?'.$this->rsym.'/'
+            );
+            $repattern = Array(
+                '<?php echo $$1; ?>',
 
             '<?php include_once "$2"?>',
 
