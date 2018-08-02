@@ -12,6 +12,8 @@ class Lolly{
     private $config;
     private $urls = Array();
     private $statics = Array();
+    private $nlimit = Array();
+    private $p404 = Array();
 
     public function __construct(){
         //获取到核心配置文件到内容
@@ -48,23 +50,40 @@ class Lolly{
         $param = $urlList;
         array_shift($param);
 
+
+        if(substr($_SERVER["REQUEST_URI"],-1) == '/'){
+            array_push($param,'');
+        }
+
+        $sym = str_repeat('../',sizeof($param));
+        define('__PUBLIC__',$sym);
+
         if(isset($this->urls[$route_path])){
+            if(isset($this->nlimit[$route_path])){
+                if($this->nlimit[$route_path] < sizeof($param)){
+                    @die(Lytpl::render_err('404',$this->p404));
+                }
+            }
             echo @call_user_func($this->urls[$route_path],$param);
+
         }elseif(isset($this->statics[$route_path])){
             $dir = Lolly . 'app/view/public' . $this->statics[$route_path];
             if(is_file($dir .  implode('/',$param))){
                 echo @file_get_contents($dir .  implode('/',$param));
             }
         }else{
-            @die(Lytpl::render_err('404',[]));
+            @die(Lytpl::render_err('404',$this->p404));
         }
 
     }
 
     //增加单条路由
-    public function route($path,$vers){
+    public function route($path,$vers,$num=null){
         if(is_string($path) && is_string($vers)){
             $this->urls[$path] = $vers;
+            if(is_int($num)){
+                $this->nlimit[$path] = $num;
+            }
         }
     }
 
@@ -91,6 +110,22 @@ class Lolly{
     public function addStaticAlias($alias,$path){
         if(is_string($alias) && is_string($path)){
             $this->statics[$alias] = $path;
+        }
+    }
+
+    //限制二级目录长度
+    public function routePathNum($path,$num){
+        if(is_string($path) && is_int($num)){
+            if(isset($this->urls[$path])){
+                $this->nlimit[$path] = $num;
+            }
+        }
+    }
+
+    //404传入的值
+    public function paramTo404($list){
+        if(is_array($list)){
+            $this->p404 = $list;
         }
     }
 }

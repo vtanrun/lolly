@@ -48,7 +48,9 @@ class Parser{
                 '/'.$this->lsym.'\s?\@(.*?)\s?'.$this->rsym.'/',
                 '/'.$this->lsym.'\s?\#(.*?)\s?'.$this->rsym.'/',
                 '/'.$this->lsym.'\s?\%(.*?)\s?'.$this->rsym.'/',
-                '/'.$this->lsym.'\s?end\s?'.$this->rsym.'/'
+                '/'.$this->lsym.'\s?end\s?'.$this->rsym.'/',
+
+                '/'.$this->lsym.'\s?\_\_PUBLIC\_\_\s?'.$this->rsym.'/'
             );
             $repattern = Array(
                 '<?php echo $$1; ?>',
@@ -74,7 +76,9 @@ class Parser{
             '<?php @ $1; ?>',
             '<?php // $1 ?>',
             '<?php $1; ?>',
-            '<?php } ?>'
+            '<?php } ?>',
+
+            '<?php echo(__PUBLIC__); ?>',
         );
         $reptpl = preg_replace($pattern, $repattern, $this->tpl);
         return $reptpl;
