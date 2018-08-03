@@ -1,145 +1,69 @@
-# Lolly
+Lolly是一款轻量级、高性能的PHP开发框架，是由小卓于"2018-07-15"发布。
 
-#### 项目介绍
+### Lolly的出现:
 
-一款轻量级的PHP框架,可快速开发中小型项目
+在开发Lolly之前，我想做一个"我的世界"资源仓库。选择使用PHP来开发！在之前的项目中，我没有用过任何的框架，直到这一次，发现不用框架有些麻烦，写起来太累了。就去看了看"ThinkPHP"的文档，发现东西太多了，懒得去学！就想着自己开发一个框架，可以按照自己的需求来做！
 
-#### 功能介绍
+### Lolly的特性
 
-* 内置模板引擎，支持部分语句(if for goto ...)
-* 内置强大的Medoo框架，踩上了巨人的肩膀
-* 内置Composer，快捷的依赖管理
-* 轻量级高性能，节省更多的开销
+ - 简单易用:你可以在很短的时间内学会它并快速的使用它开发一个Web项目！
+ - 开放性强:Lolly不会对功能进行过分的限制，你可以快速的开发出符合需求的项目！
+ - MIT协议:你可以使用、复制、修改、合并、出版发行、散布、再授权及贩售项目及项目的副本！
+ - 强大功能:内置Composer、Medoo，站在巨人的肩膀上！
+ - 长期更新:作者将长期更新本项目，让Lolly越来越实用！
+ - 简单配置:几乎为零的配置文件！
+ - 快速部署:将代码放置到服务器并修改少量配置文件，即可完成部署
 
-#### 代码演示
+### Lolly的功能
 
-路由设置:
+> 当前功能介绍以Lolly2.0.2版本为标准
 
-    //设置单个路由
-    $lolly->route('/','index');
-    
-    //设置多个路由
-    $lolly->routeList([
-        '/' => 'index',
-        '/user' => 'user'
-    ]);
-    
-    //直接读取route.php的配置文件
-    $lolly->routeConf();
-    
+ - 灵活的路由系统，无任何过分的限制！
+ - 轻量级模板引擎:Lytpl or [Wetpl][1]!
+ - 简单对Redis缓存系统，封装常用函数！
+ - 内置[Medoo][2]数据库访问框架！
+ - 小型工具包：配置加载、字符串处理、文件上传...
+ - 易于拓展的loader工具，一键引用其他PHP代码！
 
-模板引擎:
+### 简单的Hello World
 
-    //输出变量的值
-    {{$name}}
-    //if语句
-    {{if 1 + 1 == 2}}
-    //else语句
-    {{ else }}
-    //elseif语句
-    {{elif 1 + 1 == 3 }}
-    //for语句
-    {{ for $i = 1;i < 10;i++ }}
-    //循环遍历
-    {{ loop $name($k,$v) }}
-    //while
-    {{ while true }}
-    //结束语句(通用)
-    {{ end }}
-    
-    ......
-    
-简单的Hello world
 
     <?php
     /*
      * lolly入口文件
      *
      */
-    
+
     use Lolly\Lolly;
-    
+
     define('Lolly',dirname(__FILE__) . '/');
-    
+
     //引用自动加载文件
     require_once(Lolly . 'vendor/autoload.php');
-    
+
     $lolly = new Lolly();
-    
+
+    //创建一个路由
     $lolly->route('/hello','hello');
-    
+
+    //限制路由Path数量
+    $lolly->routePathNum('/hello',1);
+
     //index函数
     function hello($arg){
-        arg可以获取二级Path
-        if(sizeof($arg) > 2){
-            return \Lytpl\Lytpl::render_err('404',[]);
-        }
-        return "hello:" . $arg[1];
+        return "hello:" . $arg[0];
     }
     //访问 /hello/name会输出一个 "hello:name" 如果访问的是 /hello/name/XXX 会出现404
-    $lolly->run();    
-    
-模板继承代码:
-> index.php
+    $lolly->run();   
 
-    <?php
-    /*
-     * lolly入口文件
-     *
-     */
-    
-    use Lolly\Lolly;
-    
-    define('Lolly',dirname(__FILE__) . '/');
-    
-    //引用自动加载文件
-    require_once(Lolly . 'vendor/autoload.php');
-    
-    $lolly = new Lolly();
-    
-    $lolly->route('/hello','hello');
-    
-    function hello(){
-        return \Lytpl\Lytpl::render_tpl('index.html',[])
-    }
-    
-> Lolly/view/public/index.html
 
-    {{GlobalFun::extend('head/head.html',['test' => 'test msg'])}}
-    
-    <p>this is in Lolly/view/public/index.html</p>
-    
-    </body>
-    </html>
-    
-> Lolly/view/public/head/head.html
+### 项目主页
 
-    <html>
-    <head>
-        <title>{{$test}}</title>
-    </head>
-    <body>
-        <p>this is in Lolly/view/public/head/head.html</p>
+GitHub:https://github.com/xiaozhuox/lolly
 
-    
-#### siege测试
+码云:https://gitee.com/mrxzx/lolly
 
-循环输出10个 hello world
+官方博客(持续更新教程):http://blog.wwsg18.com
 
->MBP:~ mrxzx$ siege -c 100 -t 30s localhost/lolly<br>
-
->Transactions:		       16352 hits<br>
- Availability:		       99.79 %<br>
- Elapsed time:		       29.78 secs<br>
- Data transferred:	        3.53 MB<br>
- Response time:		        0.11 secs<br>
- Transaction rate:	      549.09 trans/sec<br>
- Throughput:		        0.12 MB/sec<br>
- Concurrency:		       60.91<br>
- Successful transactions:       16441<br>
- Failed transactions:	          34<br>
- Longest transaction:	        0.42<br>
- Shortest transaction:	        0.01<br>
- 
-[Lolly开发教程](https://www.kancloud.cn/mrxzx/lollyfw/698925)
-
+  [1]: https://gitee.com/mrxzx/Wetpl
+  [2]: https://medoo.lvtao.net

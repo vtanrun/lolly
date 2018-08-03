@@ -51,7 +51,7 @@ class Lolly{
         array_shift($param);
 
 
-        if(substr($_SERVER["REQUEST_URI"],-1) == '/'){
+        if(substr($_SERVER["REQUEST_URI"],-1) == '/' &&  isset($urlList[0])){
             array_push($param,'');
         }
 
