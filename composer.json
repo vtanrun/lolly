@@ -1,0 +1,21 @@
+{
+    "name": "loly/lolly-plus",
+    "description": "Lolly框架全新升级",
+    "type": "project",
+    "require": {
+        "lolly/lolly-core": "dev-master"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "xiaozhuox",
+            "email": "mrxzx@wwsg18.top"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "APP\\":"app"
+        }
+    },
+    "minimum-stability": "dev"
+}
