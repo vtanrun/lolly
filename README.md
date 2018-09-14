@@ -25,38 +25,6 @@ Lolly是一款轻量级、高性能的PHP开发框架，是由小卓于"2018-07-
  - 小型工具包：配置加载、字符串处理、文件上传...
  - 易于拓展的loader工具，一键引用其他PHP代码！
 
-### 简单的Hello World
-
-
-    <?php
-    /*
-     * lolly入口文件
-     *
-     */
-
-    use Lolly\Lolly;
-
-    define('Lolly',dirname(__FILE__) . '/');
-
-    //引用自动加载文件
-    require_once(Lolly . 'vendor/autoload.php');
-
-    $lolly = new Lolly();
-
-    //创建一个路由
-    $lolly->route('/hello','hello');
-
-    //限制路由Path数量
-    $lolly->routePathNum('/hello',1);
-
-    //index函数
-    function hello($arg){
-        return "hello:" . $arg[0];
-    }
-    //访问 /hello/name会输出一个 "hello:name" 如果访问的是 /hello/name/XXX 会出现404
-    $lolly->run();   
-
-
 ### 项目主页
 
 GitHub:https://github.com/xiaozhuox/lolly
