@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
-                "reference": "8d90cba0e8ff176028847527d0ea76fe41a06ecf"
+                "reference": "8bde25fec9bb2dcb3caca2927d0abd65e0c9eff4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/catfan/Medoo/zipball/8d90cba0e8ff176028847527d0ea76fe41a06ecf",
-                "reference": "8d90cba0e8ff176028847527d0ea76fe41a06ecf",
+                "url": "https://api.github.com/repos/catfan/Medoo/zipball/8bde25fec9bb2dcb3caca2927d0abd65e0c9eff4",
+                "reference": "8bde25fec9bb2dcb3caca2927d0abd65e0c9eff4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -69,20 +69,20 @@
                 "sql",
                 "sqlite"
             ],
-            "time": "2018-06-14T18:59:08+00:00"
+            "time": "2018-10-08T09:29:25+00:00"
         },
         {
             "name": "filp/whoops",
-            "version": "dev-master",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "e79cd403fb77fc8963a99ecc30e80ddd885b3311"
+                "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/e79cd403fb77fc8963a99ecc30e80ddd885b3311",
-                "reference": "e79cd403fb77fc8963a99ecc30e80ddd885b3311",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
+                "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -136,7 +136,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2018-06-30T13:14:06+00:00"
+            "time": "2018-10-23T09:00:00+00:00"
         },
         {
             "name": "lolly/lolly-core",
@@ -144,12 +144,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LollyPlus/Lolly-core.git",
-                "reference": "bb1cf3c31db373972d983f3078595c92a4563303"
+                "reference": "2549c65010c76238ecd83cf4f4f7c7052be14544"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LollyPlus/Lolly-core/zipball/bb1cf3c31db373972d983f3078595c92a4563303",
-                "reference": "bb1cf3c31db373972d983f3078595c92a4563303",
+                "url": "https://api.github.com/repos/LollyPlus/Lolly-core/zipball/2549c65010c76238ecd83cf4f4f7c7052be14544",
+                "reference": "2549c65010c76238ecd83cf4f4f7c7052be14544",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -182,7 +182,7 @@
                 }
             ],
             "description": "Lolly核心代码",
-            "time": "2018-09-12T14:20:47+00:00"
+            "time": "2018-10-29T06:49:11+00:00"
         },
         {
             "name": "psr/log",
